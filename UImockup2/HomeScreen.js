@@ -72,7 +72,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
      <Pressable style={{right: 150}} onPress={() => navigation.navigate('Checkout')}><Ionicons name="menu-outline" size={40} color="black"/></Pressable>
      <Pressable style={{left: 110, top: -35}}><Ionicons name="search-outline" size={30} color="black"/></Pressable>
      <Pressable style={{left: 150, top: -67}}><Ionicons name="bag-outline" size={30} color="black"/></Pressable>
-     <Text style={{fontSize: 40, fontWeight:'bold',right:100, top: -20}}> Our Story</Text>
+     <Text style={{fontSize: 40,right:100, top: -20}}> Our Story</Text>
      <Pressable style={styles.filter}><Ionicons name="filter-outline" size={25} color="orange"/></Pressable>
      <Pressable style={styles.list}><Ionicons name="list-outline" size={25} color="black"/></Pressable>
       <StatusBar style="auto" />
@@ -81,6 +81,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
       horizontal={true}
       data={paw}
       renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
+     <Pressable style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
       <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
       <Text style={styles.flatlistdescription}>{item.dressType}</Text>
       <Text style={styles.flatlistprice}>{item.price}</Text>
@@ -90,6 +91,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
       horizontal={true}
       data={wap}
       renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
+      <Pressable style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
       <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
       <Text style={styles.flatlistdescription}>{item.dressType}</Text>
       <Text style={styles.flatlistprice}>{item.price}</Text>
@@ -99,6 +101,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
       horizontal={true}
       data={awp}
       renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
+      <Pressable style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
       <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
       <Text style={styles.flatlistdescription}>{item.dressType}</Text>
       <Text style={styles.flatlistprice}>{item.price}</Text>
@@ -108,6 +111,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
       horizontal={true}
       data={apw}
       renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
+      <Pressable style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
       <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
       <Text style={styles.flatlistdescription}>{item.dressType}</Text>
       <Text style={styles.flatlistprice}>{item.price}</Text>
@@ -158,16 +162,19 @@ const styles = StyleSheet.create({
   },
   flatlistcontainer:{
     fontSize: 16,
-    left: 20
+    left: 20,
+    top:-20
   },
   flatlistdescription:{
     fontSize: 11,
     left: 20,
-    color: 'grey'
+    color: 'grey',
+    top:-20
   },
   flatlistprice:{
     left: 20,
     fontSize: 20,
-    color:'orange'
+    color:'orange',
+    top:-20
   }
 });
