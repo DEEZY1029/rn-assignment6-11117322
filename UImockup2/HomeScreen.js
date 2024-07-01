@@ -6,16 +6,62 @@ import Ionicons from '@expo/vector-icons/Ionicons';
   const paw =[
     { index:1,
    image: require ('./assets/dress1.png'),
-   dressName:'Church wear',
+   dressName:'Office wear',
    dressType:'Reversible angorra cardigan',
    price:'$120'
     },
-    { index:1,
+    { index:2,
       image: require('./assets/dress2.png'),
-      dressName:'lamerei',
+      dressName:'Black',
    dressType:'Reversible angorra cardigan',
    price:'$120'
        },
+  ];
+
+  const wap=[
+    {
+    index:1,
+    image: require ('./assets/dress3.png'),
+    dressName:'Church wear',
+    dressType:'Reversible angorra cardigan',
+    price:'$120'
+     },
+     { index:2,
+       image: require('./assets/dress4.png'),
+       dressName:'Lamerei',
+    dressType:'Reversible angorra cardigan',
+    price:'$120'
+        },
+  ];
+  const awp=[
+    {
+    index:1,
+    image: require ('./assets/dress5.png'),
+    dressName:'21WN',
+    dressType:'Reversible angorra cardigan',
+    price:'$120'
+     },
+     { index:2,
+       image: require('./assets/dress6.png'),
+       dressName:'Lopo',
+    dressType:'Reversible angorra cardigan',
+    price:'$120'
+        },
+  ];
+  const apw=[
+    {
+    index:1,
+    image: require ('./assets/dress7.png'),
+    dressName:'21WN',
+    dressType:'Reversible angorra cardigan',
+    price:'$120'
+     },
+     { index:2,
+       image: require('./assets/dress3.png'),
+       dressName:'Lamerei',
+    dressType:'Reversible angorra cardigan',
+    price:'$120'
+        },
   ];
   return (
 
@@ -34,6 +80,33 @@ import Ionicons from '@expo/vector-icons/Ionicons';
       <FlatList
       horizontal={true}
       data={paw}
+      renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
+      <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
+      <Text style={styles.flatlistdescription}>{item.dressType}</Text>
+      <Text style={styles.flatlistprice}>{item.price}</Text>
+      </View>)}
+      />
+      <FlatList
+      horizontal={true}
+      data={wap}
+      renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
+      <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
+      <Text style={styles.flatlistdescription}>{item.dressType}</Text>
+      <Text style={styles.flatlistprice}>{item.price}</Text>
+      </View>)}
+      />
+      <FlatList
+      horizontal={true}
+      data={awp}
+      renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
+      <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
+      <Text style={styles.flatlistdescription}>{item.dressType}</Text>
+      <Text style={styles.flatlistprice}>{item.price}</Text>
+      </View>)}
+      />
+      <FlatList
+      horizontal={true}
+      data={apw}
       renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
       <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
       <Text style={styles.flatlistdescription}>{item.dressType}</Text>
