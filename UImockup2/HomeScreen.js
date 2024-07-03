@@ -12,15 +12,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       let existingCartItems = await AsyncStorage.getItem('cartItems');
       existingCartItems = existingCartItems ? JSON.parse(existingCartItems) : [];
 
-      // Add the new item to cart
+      
       existingCartItems.push(item);
 
-      // Save updated cart items back to AsyncStorage
+      
       await AsyncStorage.setItem('cartItems', JSON.stringify(existingCartItems));
 
-      // Navigate to cart screen or show feedback
-      // navigation.navigate('Checkout'); // Example navigation usage
-      alert('Item added to cart successfully!');
+     
+      alert('Item added to cart successfully!. Click on the bag icon at the top of the screen');
     } catch (error) {
       console.error('Error adding to cart:', error);
     }
@@ -43,13 +42,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
   const wap=[
     {
-    index:1,
+    index:3,
     image: require ('./assets/dress3.png'),
     dressName:'Church wear',
     dressType:'Reversible angorra cardigan',
     price:'$120'
      },
-     { index:2,
+     { index:4,
        image: require('./assets/dress4.png'),
        dressName:'Lamerei',
     dressType:'Reversible angorra cardigan',
@@ -58,13 +57,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
   ];
   const awp=[
     {
-    index:1,
+    index:5,
     image: require ('./assets/dress5.png'),
     dressName:'21WN',
     dressType:'Reversible angorra cardigan',
     price:'$120'
      },
-     { index:2,
+     { index:6,
        image: require('./assets/dress6.png'),
        dressName:'Lopo',
     dressType:'Reversible angorra cardigan',
@@ -73,13 +72,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
   ];
   const apw=[
     {
-    index:1,
+    index:7,
     image: require ('./assets/dress7.png'),
     dressName:'21WN',
     dressType:'Reversible angorra cardigan',
     price:'$120'
      },
-     { index:2,
+     { index:8,
        image: require('./assets/dress3.png'),
        dressName:'Lamerei',
     dressType:'Reversible angorra cardigan',
@@ -92,9 +91,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
     <View style={styles.container}>
       <View style={styles.positioning}>
       <Image style={{top:25, left: -5}}source={require('./assets/Logo.png')}/>
-     <Pressable style={{right: 150}} onPress={() => navigation.navigate('Checkout')}><Ionicons name="menu-outline" size={40} color="black"/></Pressable>
+     <Pressable style={{right: 150}}><Ionicons name="menu-outline" size={40} color="black"/></Pressable>
      <Pressable style={{left: 110, top: -35}}><Ionicons name="search-outline" size={30} color="black"/></Pressable>
-     <Pressable style={{left: 150, top: -67}}><Ionicons name="bag-outline" size={30} color="black"/></Pressable>
+     <Pressable style={{left: 150, top: -67}} onPress={() => navigation.navigate('Checkout')}><Ionicons name="bag-outline" size={30} color="black"/></Pressable>
      <Text style={{fontSize: 40,right:100, top: -20}}> Our Story</Text>
      <Pressable style={styles.filter}><Ionicons name="filter-outline" size={25} color="orange"/></Pressable>
      <Pressable style={styles.list}><Ionicons name="list-outline" size={25} color="black"/></Pressable>
@@ -114,7 +113,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       horizontal={true}
       data={wap}
       renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
-      <Pressable style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
+      <Pressable  onPress={() => addToCart(item)} style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
       <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
       <Text style={styles.flatlistdescription}>{item.dressType}</Text>
       <Text style={styles.flatlistprice}>{item.price}</Text>
@@ -124,7 +123,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       horizontal={true}
       data={awp}
       renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
-      <Pressable style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
+      <Pressable  onPress={() => addToCart(item)} style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
       <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
       <Text style={styles.flatlistdescription}>{item.dressType}</Text>
       <Text style={styles.flatlistprice}>{item.price}</Text>
@@ -134,7 +133,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       horizontal={true}
       data={apw}
       renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
-      <Pressable style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
+      <Pressable  onPress={() => addToCart(item)} style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
       <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
       <Text style={styles.flatlistdescription}>{item.dressType}</Text>
       <Text style={styles.flatlistprice}>{item.price}</Text>
@@ -152,7 +151,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    top:-40
   },
   positioning: {
     alignItems:'center',
