@@ -1,8 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Pressable, FlatList, Image} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
  export default function HomeScreen ({navigation}) {
+  const [cartItems, setCartItems] = React.useState([]);
+
+  const addToCart = async (item) => {
+    try {
+      let existingCartItems = await AsyncStorage.getItem('cartItems');
+      existingCartItems = existingCartItems ? JSON.parse(existingCartItems) : [];
+
+      // Add the new item to cart
+      existingCartItems.push(item);
+
+      // Save updated cart items back to AsyncStorage
+      await AsyncStorage.setItem('cartItems', JSON.stringify(existingCartItems));
+
+      // Navigate to cart screen or show feedback
+      // navigation.navigate('Checkout'); // Example navigation usage
+      alert('Item added to cart successfully!');
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+    }
+  };
+
   const paw =[
     { index:1,
    image: require ('./assets/dress1.png'),
@@ -81,7 +104,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
       horizontal={true}
       data={paw}
       renderItem={({item})=>(<View style={styles.conco}><Image source={item.image} style={styles.dresses} />
-     <Pressable style={{top:-30, left: 150}}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
+     <Pressable onPress={() => addToCart(item)} style={{ top: -30, left: 150 }}><Ionicons name="add-circle-outline" size={25} color="black"/></Pressable>
       <Text style={styles.flatlistcontainer}>{item.dressName}</Text>
       <Text style={styles.flatlistdescription}>{item.dressType}</Text>
       <Text style={styles.flatlistprice}>{item.price}</Text>
